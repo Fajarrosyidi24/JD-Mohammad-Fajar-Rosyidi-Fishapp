@@ -36,11 +36,6 @@ class HandleInertiaRequests extends Middleware
             'auth' => [
                 'user' => $request->user(),
             ],
-            'seo' => [
-                'title' => $seo['seo_title'] ?? config('app.name'),
-                'description' => $seo['seo_description'] ?? '',
-                'keywords' => $seo['seo_keywords'] ?? '',
-            ],
             'flash' => [
                 'success' => fn() => $request->session()->get('success'),
                 'error'   => fn() => $request->session()->get('error'),
