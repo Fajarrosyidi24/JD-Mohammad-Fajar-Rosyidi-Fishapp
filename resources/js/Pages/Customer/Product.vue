@@ -4,6 +4,12 @@ import CustomerLayout from '@/Layouts/CustomerLayout.vue';
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import { ref, computed, watch } from 'vue'
+import { onMounted } from 'vue';
+import { useMenuStore } from '@/Stores/menuStore';
+const menuStore = useMenuStore()
+onMounted(() => {
+    menuStore.fetchMenus()
+})
 
 AOS.init({
   duration: 600,
@@ -150,7 +156,7 @@ watch(selectedCategory, (val) => {
               <!-- Tombol -->
               <div class="mt-4 flex gap-3">
                 <Link
-                  :href="`/product/${product.id}`"
+                  :href="route('product_detail_auth', { role: menuStore.getRoleName, id:product.id })"
                   class="flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm font-medium bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-100 hover:bg-gray-300 dark:hover:bg-gray-600 transition"
                 >
                   <i class="fas fa-eye"></i>

@@ -18,7 +18,7 @@
     @inertiaHead
 
     <!-- Favicons -->
-    <link href="{{ asset('assets/img/logo/Logoweb.png') }}" rel="icon">
+    <link href="{{ asset('assets/img/logo/Untitled-1-removebg-preview.png') }}" rel="icon">
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com" rel="preconnect">

@@ -47,7 +47,7 @@
             <p
               class="text-sm font-medium text-green-600 dark:text-green-400 mb-3"
             >
-              Stok: {{ product.stock ?? 'Tidak tersedia' }}
+              Stok Tersedia: {{ product.stock ?? 'Tidak tersedia' }} KG
             </p>
 
             <!-- Deskripsi -->

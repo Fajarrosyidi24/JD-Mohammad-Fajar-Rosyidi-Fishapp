@@ -2,7 +2,7 @@
     <nav
         class="bg-white border-b border-gray-200 px-4 py-2.5 dark:bg-gray-800 dark:border-gray-700 fixed left-0 right-0 top-0 z-50">
         <div class="flex justify-between items-center w-full">
-            <DrawerComponent />
+            <DrawerComponent :role="role" />
             <div class="flex items-center justify-center">
                 <ProfileComponent />
             </div>
@@ -17,6 +17,10 @@ import { onMounted } from 'vue'
 import { initFlowbite } from 'flowbite'
 onMounted(() => {
     initFlowbite();
+});
+
+const props = defineProps({
+  role: String
 });
 </script>
 

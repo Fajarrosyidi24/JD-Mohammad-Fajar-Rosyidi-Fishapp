@@ -20,7 +20,7 @@ const props = defineProps({
     default: () => []
   },
   selectedCategory: {
-    type: String, // slug
+    type: String,
     default: ''
   }
 })

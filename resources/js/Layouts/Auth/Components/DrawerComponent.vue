@@ -23,7 +23,7 @@
       <span class="sr-only">Toggle sidebar</span>
     </button>
 
-    <a href="https://flowbite.com" class="flex items-center mr-4">
+    <a :href="route('home', { role: role })" class="flex items-center mr-4">
       <ApplicationLogo />
     </a>
 
@@ -39,11 +39,15 @@ import SearchButonComponent from './SearchButonComponent.vue';
 import ApplicationLogo from '@/Components/ApplicationLogo.vue'
 onMounted(() => {
   initFlowbite();
-})
+});
+
+const props = defineProps({
+  role: String
+});
 </script>
 
 <style scoped>
 .drawer-style {
   margin-left: 20px;
-}
+};
 </style>

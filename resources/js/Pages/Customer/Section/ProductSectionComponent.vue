@@ -47,7 +47,7 @@
             <p
               class="text-sm font-medium text-green-600 dark:text-green-400 mb-3"
             >
-              Stok: {{ product.stock ?? 'Tidak tersedia' }}
+              Stok Tersedia: {{ product.stock ?? 'Tidak tersedia' }} KG
             </p>
 
             <!-- Deskripsi -->
@@ -61,7 +61,7 @@
             <div class="mt-auto flex gap-3">
               <!-- Tombol Detail -->
               <Link
-                :href="`/product/${product.id}`"
+                :href="route('product_detail_auth', { role: role, id:product.id })"
                 class="flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm font-medium bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-100 hover:bg-gray-300 dark:hover:bg-gray-600 transition w-full"
               >
                 <i class="fas fa-eye"></i>

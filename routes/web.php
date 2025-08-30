@@ -1,14 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LandingPageController;
+use App\Http\Controllers\Customer\CustomerController;
 use App\Http\Controllers\Admin\Pengaturan\PengaturanHeroController;
 use App\Http\Controllers\Admin\Pengaturan\PengaturanSitusController;
 use App\Http\Controllers\Admin\UserManagement\UserManagementController;
-use App\Http\Controllers\Customer\CustomerController;
 
 Route::middleware('person')->group(function () {
     Route::get('/', [LandingPageController::class, 'home'])->name('welcome');
@@ -19,6 +20,8 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::prefix('{role}')->group(function () {
         Route::get('/home', [CustomerController::class, 'index'])->name('home');
         Route::get('/product', [CustomerController::class, 'product'])->name('product_auth');
+        Route::get('/product/show/{id}', [CustomerController::class, 'productDetail'])->name('product_detail_auth');
+        Route::post('/product/show/{id}/{quantity}/{subtotal}', [CustomerController::class, 'cartStore'])->name('add_cart');
 
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
         Route::prefix('pengaturan-situs')->group(function () {
@@ -37,6 +40,7 @@ Route::middleware('auth', 'verified')->group(function () {
         });
     });
     Route::get('/menus', [MenuController::class, 'index'])->name('get.menus');
+    Route::get('/cart/count', [CartController::class, 'index'])->name('get.cart.count');
 });
 
 Route::get('/api/sites', [PengaturanSitusController::class, 'sitesjson'])->name('get.site');

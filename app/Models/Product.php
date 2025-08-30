@@ -17,6 +17,7 @@ class Product extends Model implements HasMedia
 
     protected $fillable = [
         'product_category_id',
+        'user_id',
         'name',
         'slug',
         'description',
@@ -27,7 +28,7 @@ class Product extends Model implements HasMedia
 
     protected $casts = [
         'id'                  => 'integer',
-        'product_category_id' => 'integer',
+        'user_id'             => 'integer',
         'name'                => 'string',
         'slug'                => 'string',
         'description'         => 'string',
@@ -72,6 +73,11 @@ class Product extends Model implements HasMedia
     public function category()
     {
         return $this->belongsTo(ProductCategory::class, 'product_category_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function scopeActive($query)

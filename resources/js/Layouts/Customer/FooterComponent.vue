@@ -25,11 +25,24 @@
           </div>
         </div>
 
-         <div>
+        <div>
           <h4 class="text-base font-semibold mb-4">Menu</h4>
           <ul class="space-y-2">
-            <li><Link :href="route('home', {role:role})" class="text-white hover:text-[#fecb3e]">Beranda</Link></li>
-            <li><Link :href="route('product_auth', {role:role})" class="text-white hover:text-[#fecb3e]">Product</Link></li>
+            <li>
+              <Link :href="route('home', { role: role })" class="text-white hover:text-[#fecb3e]">Beranda</Link>
+            </li>
+            <li>
+              <Link :href="route('product_auth', { role: role })" class="text-white hover:text-[#fecb3e]">Product</Link>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-base font-semibold mb-4">Paket Kami</h4>
+          <ul class="space-y-2">
+            <li>
+              <Link :href="route('product_auth', { role: role })" class="text-white hover:text-[#fecb3e]">Daftar Ikan</Link>
+            </li>
           </ul>
         </div>
 
@@ -65,7 +78,7 @@ const props = defineProps({
     type: Object,
     default: () => []
   },
-   role: {
+  role: {
     type: String,
   },
 });

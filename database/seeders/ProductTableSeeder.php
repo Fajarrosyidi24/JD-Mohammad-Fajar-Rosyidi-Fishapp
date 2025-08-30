@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Enums\Status;
+use App\Models\User;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use Illuminate\Support\Str;
@@ -56,12 +57,23 @@ class ProductTableSeeder extends Seeder
         $envService = new EnvEditor();
 
         if ($envService->getValue('DEMO') && $envService->getValue('DISPLAY') == 'seafood') {
+            // Cari user non-Customer (Admin, Super Admin, Nelayan)
+            $user = User::whereHas('roles', function ($query) {
+                $query->whereIn('name', ['Super Admin', 'Admin', 'Nelayan']);
+            })->inRandomOrder()->first();
+
+            if (!$user) {
+                $this->command->warn('⚠️ Tidak ada user yang memiliki role Super Admin/Admin/Nelayan. Seeder produk dilewati.');
+                return;
+            }
+
             foreach ($this->seafoodProducts as $categoryName => $products) {
                 $category = ProductCategory::where('name', $categoryName)->first();
 
                 if ($category) {
                     foreach ($products as $product) {
                         $newProduct = Product::create([
+                            'user_id'             => $user->id, // Assign user non-Customer
                             'product_category_id' => $category->id,
                             'name'                => $product['name'],
                             'slug'                => Str::slug($product['name']) . '-' . rand(100, 999),
