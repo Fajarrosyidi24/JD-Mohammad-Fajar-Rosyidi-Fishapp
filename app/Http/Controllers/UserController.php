@@ -72,7 +72,7 @@ class UserController extends Controller
         }
         Auth::login($user);
         $roleName = str_replace(' ', '-', strtolower($user->roles->first()->name ?? 'user'));
-        return redirect()->route('dashboard', ['role' => $roleName])
+        return redirect()->route('home', ['role' => $roleName])
             ->with('success', 'Data berhasil diperbarui.');
     }
 

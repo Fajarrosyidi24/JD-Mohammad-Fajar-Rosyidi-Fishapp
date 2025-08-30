@@ -13,6 +13,7 @@ class PermissionSeeder extends Seeder
             'Dashboard',
             'Pengaturan Situs',
             'Pengaturan Hero',
+            'Manajemen Pengguna'
         ];
 
         foreach ($permissions as $permission) {

@@ -21,7 +21,7 @@ class EmailVerificationPromptController extends Controller
             $roleName = str_replace(' ', '-', strtolower($user->roles->first()->name));
 
             return redirect()->intended(
-                route('dashboard', ['role' => $roleName], absolute: false)
+                route('home', ['role' => $roleName], absolute: false)
             );
         }
 

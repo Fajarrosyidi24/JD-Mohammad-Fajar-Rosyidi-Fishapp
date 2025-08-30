@@ -72,4 +72,33 @@ class RegistrationService
         );
         return $user;
     }
+
+    public function createUser(array $data)
+    {
+        $user = User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+        ]);
+
+        $user->assignRole('Customer');
+
+        $userFolder = "users/{$user->id}";
+
+        $detailData = [
+            'phone'      => $data['phone'] ?? null,
+            'address'    => $data['address'] ?? null,
+            'birth_date' => $data['birth_date'] ?? null,
+            'gender'     => $data['gender'] ?? null,
+        ];
+
+        if (!empty($data['photo_profile'])) {
+            $detailData['photo_profile'] = $data['photo_profile']->store($userFolder, 'public');
+        }
+        if (!empty($data['photo_ktp'])) {
+            $detailData['photo_ktp'] = $data['photo_ktp']->store($userFolder, 'public');
+        }
+        $user->detail()->create($detailData);
+        return $user;
+    }
 }

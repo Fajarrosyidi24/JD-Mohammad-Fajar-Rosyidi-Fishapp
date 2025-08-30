@@ -15,10 +15,16 @@ class RoleSeeder extends Seeder
         $superAdmin->syncPermissions($allPermissions);
         $admin = Role::firstOrCreate(['name' => 'Admin']);
         $admin->syncPermissions($allPermissions);
-        $guidePermissions = Permission::whereIn('name', [
+        $nelayanPermissions = Permission::whereIn('name', [
             'Dashboard',
         ])->get();
-        $guide = Role::firstOrCreate(['name' => 'Nelayan']);
-        $guide->syncPermissions($guidePermissions);
+        $nelayan = Role::firstOrCreate(['name' => 'Nelayan']);
+        $nelayan->syncPermissions($nelayanPermissions);
+
+        $customerPermissions = Permission::whereIn('name', [
+            'Dashboard',
+        ])->get();
+        $customer = Role::firstOrCreate(['name' => 'Customer']);
+        $customer->syncPermissions($customerPermissions);
     }
 }

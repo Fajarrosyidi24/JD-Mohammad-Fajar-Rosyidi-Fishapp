@@ -42,17 +42,34 @@ class UserSeeder extends Seeder
             'photo_profile' => null,
             'photo_ktp' => null,
         ]);
-        $guide = User::firstOrCreate(
+        $nelayan = User::firstOrCreate(
             ['email' => 'glenmorepac@gmail.com'],
             [
                 'name' => 'Guide User',
                 'password' => Hash::make('password123')
             ]
         );
-        $guide->syncRoles(['Nelayan']);
-        $guide->detail()->firstOrCreate([
+        $nelayan->syncRoles(['Nelayan']);
+        $nelayan->detail()->firstOrCreate([
             'phone' => '081212345678',
             'address' => 'Jl. Guide No.3',
+            'birth_date' => '1998-08-08',
+            'gender' => 'female',
+            'photo_profile' => null,
+            'photo_ktp' => null,
+        ]);
+
+        $customer = User::firstOrCreate(
+            ['email' => 'magangfanani@gmail.com'],
+            [
+                'name' => 'Customer',
+                'password' => Hash::make('password123')
+            ]
+        );
+        $customer->syncRoles(['Customer']);
+        $customer->detail()->firstOrCreate([
+            'phone' => '081212345678',
+            'address' => 'Jl. Customer No.4',
             'birth_date' => '1998-08-08',
             'gender' => 'female',
             'photo_profile' => null,

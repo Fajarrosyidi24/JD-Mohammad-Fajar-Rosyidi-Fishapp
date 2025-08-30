@@ -19,6 +19,14 @@ class MenuSeeder extends Seeder
                 'children' => []
             ],
             [
+                'name' => 'Manajemen Pengguna',
+                'slug' => 'manajemen_pengguna',
+                'icon' => 'fas fa-users',
+                'permission_name' => 'Manajemen Pengguna',
+                'order' => 1,
+                'children' => []
+            ],
+            [
                 'name' => 'Pengaturan',
                 'icon' => 'fas fa-cog',
                 'order' => 2,

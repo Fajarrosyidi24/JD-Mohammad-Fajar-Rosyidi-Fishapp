@@ -42,6 +42,9 @@ const props = defineProps({
               <Link href="/" :class="{ active: page.url === '/' }">Beranda</Link>
             </li>
             <li>
+              <Link href="/product" :class="{ active: page.url.startsWith('/product') }">Product</Link>
+            </li>
+            <li>
               <Link href="/login" :class="{ active: page.url === '/login' }">Login</Link>
             </li>
           </ul>
@@ -57,8 +60,15 @@ const props = defineProps({
             <Link href="/" class="mobile-link" :class="{ active: page.url === '/' }" @click="toggleMenu">Beranda</Link>
           </li>
           <li>
-            <Link href="/login" class="mobile-link"
-              :class="{ active: page.url === '/login' }" @click="toggleMenu">Login</Link>
+            <Link href="/product" class="mobile-link" :class="{ active: page.url.startsWith('/product') }"
+              @click="toggleMenu">
+            Product
+            </Link>
+          </li>
+
+          <li>
+            <Link href="/login" class="mobile-link" :class="{ active: page.url === '/login' }" @click="toggleMenu">Login
+            </Link>
           </li>
         </ul>
       </nav>

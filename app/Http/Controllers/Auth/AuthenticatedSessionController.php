@@ -32,7 +32,7 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
         $request->session()->regenerate();
         $roleName = str_replace(' ', '-', strtolower(Auth::user()->roles->first()->name));
-        return redirect()->route('dashboard', ['role' => $roleName]);
+        return redirect()->route('home', ['role' => $roleName]);
     }
 
     /**

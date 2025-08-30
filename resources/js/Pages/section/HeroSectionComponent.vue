@@ -25,10 +25,10 @@ const props = defineProps({
             <p>{{ hero.subtitle ?? 'Dukung nelayan lokal dengan membeli ikan segar hasil tangkapan langsung dari pantai Muncar.' }}</p>
             
             <div class="hero-actions">
-              <Link href="/produk" class="btn-primary">Belanja Sekarang</Link>
+              <Link href="/product" class="btn-primary">Belanja Sekarang</Link>
               <a :href="hero.youtube_link" class="btn-secondary glightbox" v-if="hero.youtube_link">
                 <i class="bi bi-play-circle"></i>
-                <span>Lihat Video</span>
+              <span>Lihat Video</span>
               </a>
             </div>
 

@@ -18,7 +18,7 @@ class VerifyEmailController extends Controller
         $user = $request->user();
         if ($user->hasVerifiedEmail()) {
             $roleName = str_replace(' ', '-', strtolower($user->roles->first()->name));
-            return redirect()->route('dashboard', ['role' => $roleName])
+            return redirect()->route('home', ['role' => $roleName])
                 ->with('verified', 1);
         }
         if ($user->markEmailAsVerified()) {
@@ -26,7 +26,7 @@ class VerifyEmailController extends Controller
         }
 
         $roleName = str_replace(' ', '-', strtolower($user->roles->first()->name));
-        return redirect()->route('dashboard', ['role' => $roleName])
+        return redirect()->route('home', ['role' => $roleName])
             ->with('verified', 1);
     }
     

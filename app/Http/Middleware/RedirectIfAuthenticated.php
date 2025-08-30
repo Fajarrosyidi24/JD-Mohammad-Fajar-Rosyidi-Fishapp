@@ -55,16 +55,16 @@ class RedirectIfAuthenticated
             $role = $user->roles->pluck('name')->first();
             $roleName = str_replace(' ', '-', strtolower($role));
             if ($roleName) {
-                return route('dashboard', ['role' => $roleName]);
+                return route('home', ['role' => $roleName]);
             }
         }
-        foreach (['dashboard', 'home'] as $uri) {
+        foreach (['home', 'home'] as $uri) {
             if (Route::has($uri)) {
                 return route($uri);
             }
         }
         $routes = Route::getRoutes()->get('GET');
-        foreach (['dashboard', 'home'] as $uri) {
+        foreach (['home', 'home'] as $uri) {
             if (isset($routes[$uri])) {
                 return '/' . $uri;
             }

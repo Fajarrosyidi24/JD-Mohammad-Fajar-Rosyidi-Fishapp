@@ -16,7 +16,7 @@ class EmailVerificationNotificationController extends Controller
         $user = $request->user();
         if ($request->user()->hasVerifiedEmail()) {
               $roleName = str_replace(' ', '-', strtolower($user->roles->first()->name));
-            return redirect()->route('dashboard', ['role' => $roleName]);
+            return redirect()->route('home', ['role' => $roleName]);
         }
         $request->user()->sendEmailVerificationNotification();
         return back()->with('status', 'verification-link-sent');
