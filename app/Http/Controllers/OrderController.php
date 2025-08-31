@@ -64,18 +64,16 @@ class OrderController extends Controller
 
             $resBody = json_decode($response->getBody(), true);
 
-            // debug response dari Xendit
-            dd($resBody['invoice_url']);
-
             if (isset($resBody['invoice_url'])) {
-                return redirect($resBody['invoice_url']);
+                return redirect()->route('payment.invoice', [
+                    'url' => $resBody['invoice_url']
+                ]);
             }
 
             return response()->json([
                 'message' => 'Invoice created but no URL returned',
                 'data'    => $resBody,
             ], 200);
-
         } catch (\Exception $e) {
             // debug error message
             dd($e->getMessage());

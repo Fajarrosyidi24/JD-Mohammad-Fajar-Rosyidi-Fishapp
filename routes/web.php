@@ -5,6 +5,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CourierController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LandingPageController;
@@ -69,10 +70,11 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::get('/order/success', function () {
         return "Pembayaran berhasil!";
     })->name('order.success');
-
     Route::get('/order/failed', function () {
         return "Pembayaran gagal!";
     })->name('order.failed');
+    Route::get('/payment/invoice', [PaymentController::class, 'invoice'])
+        ->name('payment.invoice');
 });
 
 Route::get('/api/sites', [PengaturanSitusController::class, 'sitesjson'])->name('get.site');
