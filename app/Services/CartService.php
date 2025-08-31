@@ -30,4 +30,9 @@ class CartService
     {
         return Cart::where('user_id', Auth::id())->count();
     }
+
+    public function index(){
+        $carts = Cart::with('product', 'user.detail')->where('user_id', Auth::id())->get();
+        return $carts;
+    }
 }

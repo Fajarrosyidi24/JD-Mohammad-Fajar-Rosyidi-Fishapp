@@ -70,7 +70,7 @@ const props = defineProps({
           </nav>
 
           <!-- Cart Icon -->
-          <Link href="#" class="text-decoration-none text-dark fs-5 position-relative ml-3">
+          <Link :href="route('cart_index', { role: role })" class="text-decoration-none text-dark fs-5 position-relative ml-3">
           <i class="fas fa-shopping-cart text-white"></i>
           <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger text-white">
             {{ cartStore.count }}
